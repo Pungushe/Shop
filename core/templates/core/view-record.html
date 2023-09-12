@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+
+{% block title %} Обзор записи {% endblock %}
+
+{% block content %}
+    <div class="card">
+        
+        <div class="card-body">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;
+            <strong>
+                {{record.first_name|upper}}
+                {{record.last_name}}
+            </strong>
+            <hr class="my-4">
+            
+            <p> <strong> ID: </strong> {{ record.id }} </p>
+            <p><strong> Email: </strong> {{ record.email }} </p>
+            <p><strong> Номер телефона: </strong> {{ record.phone }}</p>
+            <p><strong> Адрес: </strong> {{ record.address }} </p>
+            <p><strong> Город: </strong> {{ record.city }} </p>
+            <p><strong> Область: </strong> {{ record.address }} </p>
+            <p><strong> Страна: </strong> {{ record.country }} </p>
+            <p><strong> Дата Создание: </strong> {{ record.created_date }} </p>
+        </div>
+    </div>
+    <br>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Назад &nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+    &nbsp;
+    <a href="{% url 'update-record' record.id %}" class="btn btn-warning">Обновить &nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
+    &nbsp;
+    <a href="{% url 'delete-record' record.id %}" class="btn btn-danger">Удалить &nbsp;<i class="fa fa-trash" aria-hidden="true"></i></a>
+{% endblock %}
+

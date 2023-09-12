@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+
+{% block title %} Страница пользователя {% endblock %}
+
+{% block content %}
+    <h1>Добро пожаловать, {{ user }} 👋</h1>
+
+    <a class="btn btn-primary btn-sm mt-3" href="{% url 'create-record' %}">
+        Создать новую запись &nbsp;<i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+
+    <hr class="my-4">
+
+    <table class="table table-hover">
+        <thead class="table">
+            <th scope="col">ID</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Email</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">Адрес</th>
+            <th scope="col">Страна</th>
+            <th scope="col">Область</th>
+            <th scope="col">Город</th>
+
+            <th scope="col"> Дата присоединения </th>
+
+            <th scope="col">Обзор</th>
+        </thead>
+
+        <tbody>
+            {% if records %}
+                {% for record in records %}
+                <tr>
+                    <td>{{ record.id }}</td>
+                    <td>{{ record.first_name }}</td>
+                    <td>{{ record.last_name }}</td>
+                    <td>{{ record.email }}</td>
+                    <td>{{ record.phone }}</td>
+                    <td>{{ record.address }}</td>
+                    <td>{{ record.country }}</td>
+                    <td>{{ record.province }}</td>
+                    <td>{{ record.city }}</td>
+
+                    <td>{{ record.created_date }}</td>
+
+                    <td> <a class="btn btn-success btn-sm" href="{% url 'record' record.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+
+
